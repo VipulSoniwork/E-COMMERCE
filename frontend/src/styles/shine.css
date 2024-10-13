@@ -1,0 +1,17 @@
+.shine-effect {
+    position: absolute;
+    top: -150%;
+    left: -150%;
+    width: 300%;
+    height: 300%;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 25%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.1) 75%);
+    transform: rotate(45deg);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.5s;
+  }
+  
+  div:hover .shine-effect {
+    opacity: 1;
+    transform: translateX(300%) translateY(300%);
+  }
+  
