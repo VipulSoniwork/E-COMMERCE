@@ -30,7 +30,7 @@ const Cart = () => {
   }, [cartItems, products])
 
   return (
-    <div className='border-t pt-14'>
+    <div className='border-t pt-14 px-10'>
 
       <div className=' text-2xl mb-3'>
         <Title text1={'YOUR'} text2={'CART'} />
@@ -67,7 +67,9 @@ const Cart = () => {
         <div className='w-full sm:w-[450px]'>
           <CartTotal />
           <div className=' w-full text-end'>
-            <button onClick={() => navigate('/place-order')} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button>
+            {/* <button onClick={() => navigate('/place-order')} className='bg-black text-white text-sm my-8 px-8 py-3'>PROCEED TO CHECKOUT</button> */}
+            <button onClick={() => navigate('/place-order')} className="special-btn my-8 px-8 py-3  text-sm">
+            <span className="special-btn__label">PROCEED TO CHECKOUT</span></button>
           </div>
         </div>
       </div>

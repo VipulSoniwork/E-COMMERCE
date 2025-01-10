@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
 import RelatedProducts from '../components/RelatedProducts';
+import '../styles/Special_Btn.css'
 
 const Product = () => {
 
@@ -29,7 +30,7 @@ const Product = () => {
   }, [productId,products])
 
   return productData ? (
-    <div className='border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100'>
+    <div className='border-t-2 p-10 transition-opacity ease-in duration-500 opacity-100'>
       {/*----------- Product Data-------------- */}
       <div className='flex gap-12 sm:gap-12 flex-col sm:flex-row'>
 
@@ -68,7 +69,12 @@ const Product = () => {
                 ))}
               </div>
           </div>
-          <button onClick={()=>addToCart(productData._id,size)} className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+          <button 
+    onClick={() => addToCart(productData._id, size)} 
+    className="special-btn p-3 px-5 text-sm">
+    <span className="special-btn__label">ADD TO CART</span>
+</button>
+
           <hr className='mt-8 sm:w-4/5' />
           <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
               <p>100% Original product.</p>

@@ -1,0 +1,66 @@
+button {
+    --color-dark: #110d1a;
+    --color-primary: #ffffff;
+    accent-color: var(--color-primary);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+.special-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 0.5rem 1.5rem; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: black; /* Text color */
+    text-decoration: none;
+    border-radius: 8px;
+    background-color: white; /* Background color */
+    border: 1px solid black; /* Border color */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-shadow: inset 0 0 0 1px transparent; /* Transparent shadow to show border */
+    transform: translateZ(0);
+    font-size: 0.875rem; /* Small text size (14px) */
+}
+
+.special-btn::after {
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 120%;
+    width: 120%;
+    border-radius: 20%;
+    background-color: black; /* Background color on hover */
+    scale: 0 0;
+    translate: 0 140%;
+    transition: scale 0.6s cubic-bezier(0.215, 0.61, 0.355, 1), translate 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.special-btn__label {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+    font-size: inherit; /* Use the font size from the parent */
+    letter-spacing: 0.025em;
+    transition: color 0.32s ease-in-out;
+}
+
+.special-btn:hover .special-btn__label {
+    color: white; /* Text color on hover */
+}
+
+.special-btn:hover::after {
+    scale: 1.5 1.5;
+    translate: 0 0;
+    border-radius: 50%;
+}

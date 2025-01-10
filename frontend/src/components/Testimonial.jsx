@@ -5,35 +5,31 @@ import Title from "./Title";
 
 const testimonialList = [
 	{
-		author: {
-			fullName: "Akshay Kumar",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_1.jpeg",
-			designation: "Founder / CEO",
+		"author": {
+			"fullName": "Aditi Sharma",
+			"picture": "https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_2.jpeg",
+			"designation": "Fashion Influencer"
 		},
-		description:
-			"When it comes to booking a holiday, we know everyone likes something different - so we've designed our getaways with you in mind.",
-	},
-	{
-		author: {
-			fullName: "Raima Sen",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_2.jpeg",
-			designation: "Founder / CEO",
-		},
-		description:
-			"When it comes to booking a holiday, we know everyone likes something different - so we've designed our getaways with you in mind.",
-	},
-	{
-		author: {
-			fullName: "Arjun Kapur",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_3.jpeg",
-			designation: "Founder / CEO",
-		},
-		description:
-			"When it comes to booking a holiday, we know everyone likes something different - so we've designed our getaways with you in mind.",
-	},
+		"description": "WearIt has completely transformed my wardrobe! The customization options are endless, and I love how unique my T-shirts are. Highly recommend it to anyone looking to express their personal style!"
+	}
+,	
+{
+    "author": {
+        "fullName": "Rahul Verma",
+        "picture": "https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_3.jpeg",
+        "designation": "Graphic Designer"
+    },
+    "description": "As a designer, I appreciate the attention to detail in WearIt's T-shirt designs. The platform is easy to use, and I can bring my creative ideas to life effortlessly!"
+}
+,	{
+    "author": {
+        "fullName": "Priya Singh",
+        "picture": "https://cdn.easyfrontend.com/pictures/testimonial/testimonial_square_4.jpeg",
+        "designation": "College Student"
+    },
+    "description": "I love shopping at WearIt! The quality is fantastic, and the custom designs let me show off my personality. It’s my go-to place for T-shirts!"
+}
+
 ];
 
 
