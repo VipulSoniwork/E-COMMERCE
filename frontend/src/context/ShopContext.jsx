@@ -16,6 +16,7 @@ const ShopContextProvider = (props) => {
     const [products, setProducts] = useState([]);
     const [token, setToken] = useState('')
     const navigate = useNavigate();
+    const [wishlist, setWishlist] = useState([]);
 
 
     const addToCart = async (itemId, size) => {
@@ -137,6 +138,62 @@ const ShopContextProvider = (props) => {
         }
     }
 
+    const addToWishlist = async (productId) => {
+        if (!token) {
+            toast.error('Please login first');
+            navigate('/login');
+            return;
+        }
+
+        try {
+            const response = await axios.post(backendUrl + '/api/wishlist/add', 
+                { productId }, 
+                { headers: { token } }
+            );
+            if (response.data.success) {
+                setWishlist([...wishlist, productId]);
+                toast.success(response.data.message);
+            } else {
+                toast.error(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
+    const removeFromWishlist = async (productId) => {
+        try {
+            const response = await axios.post(backendUrl + '/api/wishlist/remove', 
+                { productId }, 
+                { headers: { token } }
+            );
+            if (response.data.success) {
+                setWishlist(wishlist.filter(id => id !== productId));
+                toast.success(response.data.message);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
+    const getWishlist = async () => {
+        if (!token) return;
+        try {
+            const response = await axios.post(backendUrl + '/api/wishlist/get', 
+                {}, 
+                { headers: { token } }
+            );
+            if (response.data.success) {
+                setWishlist(response.data.wishlist);
+            }
+        } catch (error) {
+            console.log(error);
+            toast.error(error.message);
+        }
+    }
+
     useEffect(() => {
         getProductsData()
     }, [])
@@ -151,13 +208,22 @@ const ShopContextProvider = (props) => {
         }
     }, [token])
 
+    useEffect(() => {
+        if (token) {
+            getWishlist();
+        }
+    }, [token]);
+
     const value = {
         products, currency, delivery_fee,
         search, setSearch, showSearch, setShowSearch,
         cartItems, addToCart,setCartItems,
         getCartCount, updateQuantity,
         getCartAmount, navigate, backendUrl,
-        setToken, token
+        setToken, token,
+        wishlist,
+        addToWishlist,
+        removeFromWishlist
     }
 
     return (

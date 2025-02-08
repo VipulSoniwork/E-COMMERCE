@@ -8,10 +8,11 @@ import '../styles/Special_Btn.css'
 const Product = () => {
 
   const { productId } = useParams();
-  const { products, currency ,addToCart } = useContext(ShopContext);
+  const { products, currency ,addToCart, addToWishlist, removeFromWishlist, wishlist } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('')
   const [size,setSize] = useState('')
+  const isInWishlist = wishlist.includes(productData._id);
 
   const fetchProductData = async () => {
 
@@ -69,12 +70,18 @@ const Product = () => {
                 ))}
               </div>
           </div>
-          <button 
-    onClick={() => addToCart(productData._id, size)} 
-    className="special-btn p-3 px-5 text-sm">
-    <span className="special-btn__label">ADD TO CART</span>
-</button>
-
+          <div className='flex gap-4'>
+            <button 
+                onClick={() => addToCart(productData._id, size)} 
+                className="special-btn p-3 px-5 text-sm">
+                <span className="special-btn__label">ADD TO CART</span>
+            </button>
+            <button 
+                onClick={() => isInWishlist ? removeFromWishlist(productData._id) : addToWishlist(productData._id)} 
+                className={`p-3 px-5 text-sm border ${isInWishlist ? 'bg-pink-100' : 'bg-white'}`}>
+                {isInWishlist ? '♥' : '♡'}
+            </button>
+          </div>
           <hr className='mt-8 sm:w-4/5' />
           <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
               <p>100% Original product.</p>

@@ -3,6 +3,8 @@ import { assets } from '../assets/assets';
 import { Link, NavLink } from 'react-router-dom';
 import { ShopContext } from '../context/ShopContext';
 import { motion } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
     const [visible, setVisible] = useState(false);
@@ -10,7 +12,7 @@ const Navbar = () => {
     const [activeWidth, setActiveWidth] = useState(0);
     const [activeLeft, setActiveLeft] = useState(0);
 
-    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems } = useContext(ShopContext);
+    const { setShowSearch, getCartCount, navigate, token, setToken, setCartItems, wishlist } = useContext(ShopContext);
 
     const logout = () => {
         navigate('/login');
@@ -69,6 +71,18 @@ const Navbar = () => {
 
             <div className='flex items-center gap-6'>
                 <img onClick={() => { setShowSearch(true); navigate('/collection'); }} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
+                
+                <div className='relative cursor-pointer' onClick={() => token ? navigate('/wishlist') : navigate('/login')}>
+                    <FontAwesomeIcon 
+                        icon={faHeart} 
+                        className="w-5 h-5 text-gray-700 hover:text-pink-500 transition-colors" 
+                    />
+                    {wishlist.length > 0 && (
+                        <span className='absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center'>
+                            {wishlist.length}
+                        </span>
+                    )}
+                </div>
                 
                 <div className='group relative'>
                     <img onClick={() => token ? null : navigate('/login')} className='w-5 cursor-pointer' src={assets.profile_icon} alt="" />
